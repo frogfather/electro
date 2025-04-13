@@ -3,7 +3,7 @@ import * as OnOff from 'onoff';
 
 const Gpio = OnOff.Gpio;
 const router = express.Router();
-const output2 = new Gpio(573,'out');
+// const output2 = new Gpio(573,'out');
 let interval
 
 router.get("/", (req,res) => {
@@ -14,7 +14,7 @@ router.get("/", (req,res) => {
         <head>
           <meta charset="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>SI Admin Backend</title>
+          <title>Electro App</title>
           <style>
             body {
               font-family: Arial, sans-serif;
@@ -59,13 +59,13 @@ router.get("/pins/2/stop",(req,res) => {
   })
   
   const toggle = () => {
-    if (output2.readSync() === 0) {
-      console.log('switch on');
-        output2.writeSync(1);
-      } else {
-        console.log('switch off');
-        output2.writeSync(0);
-      }
+    // if (output2.readSync() === 0) {
+    //   console.log('switch on');
+    //     output2.writeSync(1);
+    //   } else {
+    //     console.log('switch off');
+    //     output2.writeSync(0);
+    //   }
     };
   
   const endToggle = () => {
