@@ -1,6 +1,6 @@
 import ElectroProcessor  from "../lib/electroProcessor.js";
 
-const INTERVAL_MILLISECONDS = 500;
+const INTERVAL_MILLISECONDS = 1000;
 class ElectroTimer {
 
     constructor () {
@@ -61,6 +61,8 @@ class ElectroTimer {
             this.electroProcessor.setPollInterval(options.pollInterval);
         }
     }
+    
+    
     
 };
 

@@ -1,10 +1,6 @@
 import express from "express";
-import * as OnOff from 'onoff';
 
-const Gpio = OnOff.Gpio;
 const router = express.Router();
-// const output2 = new Gpio(573,'out');
-let interval
 
 router.get("/", (req,res) => {
   console.log('get base route');
@@ -44,34 +40,7 @@ router.get("/", (req,res) => {
     </html>
     `)
 });
-router.get("/pins/2/start",(req,res) => {
-    interval = setInterval(toggle,3000);
-    res.status(200).json({
-        status: "started"
-      })
-  });
-
-router.get("/pins/2/stop",(req,res) => {
-    endToggle();
-    res.status(200).json({
-        status: "stopped"
-      })
-  })
   
-  const toggle = () => {
-    // if (output2.readSync() === 0) {
-    //   console.log('switch on');
-    //     output2.writeSync(1);
-    //   } else {
-    //     console.log('switch off');
-    //     output2.writeSync(0);
-    //   }
-    };
   
-  const endToggle = () => {
-      clearInterval(interval);
-      output2.writeSync(0);
-      output2.unexport();
-  }
 
 export { router as statusRoutes };
