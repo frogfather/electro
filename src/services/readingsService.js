@@ -1,7 +1,7 @@
-import Readings from "../../models/readings.js";
+import db from "../../models/index.cjs";
 
 export const getAllReadings = () => {
-        return Readings.findAndCountAll({
+        return db.Readings.findAndCountAll({
             where: {},
             limit: 40,
             order: [["id", "DESC"]]

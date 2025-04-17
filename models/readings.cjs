@@ -1,7 +1,7 @@
 'use strict';
-import { Model, DataTypes } from 'sequelize';
-import Sequelize from "sequelize";
+const { Model, DataTypes } = require('sequelize');
 
+module.exports = (sequelize, DataTypes) => {
   class Readings extends Model {}
   Readings.init({
     id: {
@@ -21,5 +21,5 @@ import Sequelize from "sequelize";
     sequelize,
     modelName: 'Readings',
   });
-
-export default Readings;
+  return Readings;
+}
