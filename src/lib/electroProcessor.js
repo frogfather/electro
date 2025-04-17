@@ -53,25 +53,31 @@ class ElectroProcessor {
 
     readTemps () {
         this.sensors.forEach(sensor => {
-            fs.readFile(`/sys/bus/w1/devices/${sensor}/w1_slave`,(err, buffer) => {
-                if (err){
-                    console.error(err);
-                    process.exit(1);
-                }
-                var data = buffer.toString('ascii').split(" ");
-                var temp  = parseFloat(data[data.length-1].split("=")[1])/1000.0;
-                temp = Math.round(temp * 10) / 10;
-                var data = {
-                    temperature_record:[
-                        {
-                            sensor_id: LOW_TEMP_SENSOR,
-                            timestamp: Date.now(),
-                            temperature: temp
-                        }
-                    ]
-                };
+            const pathToSensor = `/sys/bus/w1/devices/${sensor}/w1_slave`;
+            if (fs.existsSync(pathToSensor)) {
+                fs.readFile(pathToSensor,(err, buffer) => {
+                    if (err){
+                        console.error(err);
+                        process.exit(1);
+                    }
+                    var data = buffer.toString('ascii').split(" ");
+                    var temp  = parseFloat(data[data.length-1].split("=")[1])/1000.0;
+                    temp = Math.round(temp * 10) / 10;
+                    var data = {
+                        temperature_record:[
+                            {
+                                sensor_id: LOW_TEMP_SENSOR,
+                                timestamp: Date.now(),
+                                temperature: temp
+                            }
+                        ]
+                    };
                 //save to database
-            });
+                });    
+            } else {
+                console.log(`Path ${pathToSensor} does not exist`);
+            }
+            
         });
     };
     

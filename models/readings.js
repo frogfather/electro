@@ -1,21 +1,18 @@
 'use strict';
-import { Model } from 'sequelize';
-module.exports = (sequelize, DataTypes) => {
-  class Readings extends Model {
-    static associate(models) {
-      // define association here
-    }
-  }
+import { Model, DataTypes } from 'sequelize';
+import Sequelize from "sequelize";
+
+  class Readings extends Model {}
   Readings.init({
     id: {
             type: DataTypes.NUMBER,
             primaryKey: true
-        }
+        },
     sensorId:
         {
             type: DataTypes.STRING,
             field: "sensor_id"
-        }
+        },
     value:
         {
             type: DataTypes.DOUBLE
@@ -24,5 +21,5 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Readings',
   });
-  return Readings;
-};
+
+export default Readings;

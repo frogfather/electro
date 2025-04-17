@@ -1,5 +1,5 @@
 import expressAsyncHandler from "express-async-handler";
-import getAllReadings from "../services/readingsService";
+import { getAllReadings } from "../services/readingsService.js";
 
 export const getReadings = expressAsyncHandler(async(req, res) => {
     try {
@@ -13,4 +13,4 @@ export const getReadings = expressAsyncHandler(async(req, res) => {
                 error: err
             })
         }
-}
+});

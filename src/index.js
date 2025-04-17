@@ -3,6 +3,7 @@ import express from "express";
 import https from "https";
 import fs from "fs";
 import { statusRoutes } from "../src/routes/statusRoutes.js";
+import { readingsRoutes } from "../src/routes/readingsRoutes.js"
 import ElectroTimer from "../src/lib/electroTimer.js";
 import { timerRouter } from "../src/routes/timerRoutes.js";
 
@@ -13,7 +14,8 @@ const router = express.Router();
 app.use(express.json());
 
 app.use("/api/v1/status/", statusRoutes);
-app.use("/api/v1/timer/", timerRouter)
+app.use("/api/v1/timer/", timerRouter);
+app.use("/api/v1/readings",readingsRoutes);
 
 const electroTimer = new ElectroTimer();
 electroTimer.start(false);
