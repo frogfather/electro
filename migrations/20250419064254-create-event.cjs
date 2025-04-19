@@ -2,18 +2,18 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Reading', {
+    await queryInterface.createTable('Event', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      sensor_id: {
-        type: Sequelize.STRING
+      active: {
+        type: Sequelize.BOOLEAN
       },
-      value: {
-        type: Sequelize.DOUBLE
+      control: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -26,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Reading');
+    await queryInterface.dropTable('Event');
   }
 };
