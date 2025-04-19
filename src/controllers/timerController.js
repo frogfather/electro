@@ -1,4 +1,4 @@
-import { setTimerStatus, startTimer, stopTimer, timerStatus } from "../index.js";
+import { setTimerStatus, startTimer, stopTimer, timerStatus, getReadings } from "../index.js";
 import expressAsyncHandler from "express-async-handler";
 
 export const startElectroTimer = expressAsyncHandler(async(req, res) => {
@@ -34,4 +34,14 @@ export const setElectroTimerStatus = expressAsyncHandler(async(req,res) => {
             timerStatus: timerStat
         }
     })
-})
+});
+
+export const getSensorReadings = expressAsyncHandler(async(req,res) => {
+    const readings = getReadings();
+    console.log(readings);
+    res.status(200).json({
+        result: {
+            data: readings
+        }
+    })
+});

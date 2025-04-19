@@ -24,6 +24,7 @@ export const startTimer = (options) => electroTimer.start(options);
 export const stopTimer = () => electroTimer.stop();
 export const timerStatus = () => electroTimer.getTimerStatus();
 export const setTimerStatus = (options) => electroTimer.setTimerStatus(options);
+export const getReadings = () => electroTimer.getReadings();
 (async () => {
 
   https.createServer(

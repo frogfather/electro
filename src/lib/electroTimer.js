@@ -62,8 +62,9 @@ class ElectroTimer {
         }
     }
     
-    
-    
+    getReadings = () => {
+        return this.electroProcessor.getReadings();
+    }
 };
 
 export default ElectroTimer;
