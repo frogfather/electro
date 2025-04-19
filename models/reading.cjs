@@ -5,9 +5,11 @@ module.exports = (sequelize, DataTypes) => {
   class Reading extends Model {}
   Reading.init({
     id: {
-            type: DataTypes.NUMBER,
-            primaryKey: true
-        },
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     sensorId:
         {
             type: DataTypes.STRING,

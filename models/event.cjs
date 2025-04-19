@@ -5,7 +5,12 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Event extends Model {}
   Event.init({
-    id: DataTypes.INTEGER,
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     active: DataTypes.BOOLEAN,
     control: DataTypes.BOOLEAN
   }, {
